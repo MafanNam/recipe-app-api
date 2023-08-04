@@ -46,7 +46,8 @@ INSTALLED_APPS = [
 
     # MY SERVICES
     'core',
-    'user'
+    'user',
+    'recipe',
 ]
 
 MIDDLEWARE = [
