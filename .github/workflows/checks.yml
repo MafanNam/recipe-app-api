@@ -15,7 +15,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Postgres
+      - uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: '15'
       - name: Test
-        run: docker-compose run --rm app sh -c "python manage.py wait_for_db --keepdb && python manage.py test --keepdb"
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test --keepdb"
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
